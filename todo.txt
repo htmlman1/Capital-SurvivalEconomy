@@ -1,3 +1,10 @@
 - Shop
+  + Give players the ability to define a shop, similar to SignShop and that kind of plugin.
+  + Criteria for a sign to be a "CapitalSign" or whatever we're calling it:
+    - First line must be [CapitalShop]
+    - Second line must be the owner's name
+    - Third line must be the item they're selling (by Material name), and the amount
+    - Fourth line must be an amount, formatted as a double and rounded to the nearest hundredth
+  + When players trade with another's shop, they are taxed according to a configurable value (ConfigurationSettings.globalTax)
 - Vault
 - Lottery
