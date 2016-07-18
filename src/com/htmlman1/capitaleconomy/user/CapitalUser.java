@@ -17,6 +17,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import com.htmlman1.capitaleconomy.CapitalEconomy;
+import com.htmlman1.capitaleconomy.configuration.ConfigurationSettings;
 import com.htmlman1.capitaleconomy.money.util.PaymentType;
 import com.htmlman1.capitaleconomy.perms.CapitalPermission;
 import com.htmlman1.capitaleconomy.vault.CapitalVault;
@@ -34,7 +35,11 @@ public class CapitalUser {
 		this.setUUID(UUID.fromString(s.getString("userdata.uuid")));
 		this.setDebit(s.getDouble("userdata.debit"));
 		
-		Location vaultLoc = Location.deserialize(s.getConfigurationSection("userdata.vault").getValues(true));
+		Location vaultLoc = null;
+		if(s.isSet("vault.x")) {
+			vaultLoc = Location.deserialize(s.getConfigurationSection("userdata.vault").getValues(true));
+		}
+		
 		if(vaultLoc != null) {
 			Block vaultBlock = vaultLoc.getBlock();
 			if(vaultBlock != null) {
@@ -54,6 +59,8 @@ public class CapitalUser {
 	public CapitalUser(UUID uuid, double debit) {
 		this.setUUID(uuid);
 		this.setDebit(debit);
+		this.setPaymentType(ConfigurationSettings.defaultPayment);
+		this.setHasShop(false);
 	}
 
 	public double getDebit() {
@@ -159,7 +166,7 @@ public class CapitalUser {
 	
 	public Map<String, Object> serialize() {
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("uuid", this.getUUID());
+		result.put("uuid", this.getUUID().toString());
 		result.put("debit", this.getDebit());
 		if(this.hasVault()) {
 			result.put("vault", vault.getLocation().serialize());

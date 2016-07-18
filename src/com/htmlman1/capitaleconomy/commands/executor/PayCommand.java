@@ -4,6 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.htmlman1.capitaleconomy.api.CapitalUserFactory;
+
 public class PayCommand implements CommandExecutor {
 
 	@Override
@@ -13,6 +15,8 @@ public class PayCommand implements CommandExecutor {
 		} catch (IllegalArgumentException e) {
 			sender.sendMessage(e.getMessage());
 		}
+		
+		CapitalUserFactory.save();
 		return true;
 	}
 

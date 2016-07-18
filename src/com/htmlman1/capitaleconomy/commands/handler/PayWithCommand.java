@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.htmlman1.capitaleconomy.api.CapitalUserFactory;
 import com.htmlman1.capitaleconomy.commands.executor.PayPrefCommand;
 
 public class PayWithCommand implements CommandExecutor {
@@ -15,6 +16,8 @@ public class PayWithCommand implements CommandExecutor {
 		} catch (IllegalArgumentException e) {
 			sender.sendMessage(e.getMessage());
 		}
+		
+		CapitalUserFactory.save();
 		return true;
 	}
 

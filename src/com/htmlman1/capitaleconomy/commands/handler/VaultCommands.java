@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.htmlman1.capitaleconomy.api.CapitalUserFactory;
 import com.htmlman1.capitaleconomy.commands.executor.VaultBalanceCommand;
 
 public class VaultCommands implements CommandExecutor {
@@ -15,6 +16,8 @@ public class VaultCommands implements CommandExecutor {
 		} catch (IllegalArgumentException e) {
 			sender.sendMessage(e.getMessage());
 		}
+		
+		CapitalUserFactory.save();
 		return true;
 	}
 	

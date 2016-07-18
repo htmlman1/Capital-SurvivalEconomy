@@ -23,7 +23,7 @@ public class MoneyGiveCommand {
 			}
 		}
 		
-		if(CapitalUserFactory.isUser(args[0])) {
+		if(CapitalUserFactory.isUser(args[0]) || CapitalUserFactory.isOnline(args[0])) {
 			CapitalUser target = CapitalUserFactory.getUser(args[0]);
 			if(ValidationUtils.isDouble(args[1])) {
 				double amount = Double.parseDouble(args[1]);

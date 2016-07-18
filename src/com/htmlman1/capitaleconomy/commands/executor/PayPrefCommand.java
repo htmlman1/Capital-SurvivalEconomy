@@ -10,6 +10,8 @@ import com.htmlman1.capitaleconomy.user.CapitalUser;
 
 public class PayPrefCommand {
 
+	private static final String HELP = "§c/paywith <both|cash|debit>";
+
 	public static void execute(CommandSender sender, String[] args) throws IllegalArgumentException {
 		boolean isPlayer = (sender instanceof Player);
 		
@@ -31,6 +33,9 @@ public class PayPrefCommand {
 			} else {
 				throw new IllegalArgumentException(CapitalMessages.BE_PLAYER);
 			}
+			break;
+		default:
+			sender.sendMessage(HELP);
 			break;
 		}
 	}

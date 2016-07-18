@@ -18,6 +18,8 @@ commands:
   lotto:
     description: "Participate in the lottery! Willing to try your luck?"
     aliases: [lottery]
+  pay:
+    description: "Pay people."
   paywith:
     description: "Set the method you use to pay for items in shops."
   shop:

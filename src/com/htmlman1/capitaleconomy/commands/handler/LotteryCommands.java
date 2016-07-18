@@ -4,8 +4,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.htmlman1.capitaleconomy.api.CapitalUserFactory;
 import com.htmlman1.capitaleconomy.commands.executor.LotteryBuyCommand;
 import com.htmlman1.capitaleconomy.commands.executor.LotteryCheckCommand;
+import com.htmlman1.capitaleconomy.lottery.CapitalLotteryManager;
 
 public class LotteryCommands implements CommandExecutor {
 	
@@ -31,6 +33,9 @@ public class LotteryCommands implements CommandExecutor {
 		} catch (IllegalArgumentException e) {
 			sender.sendMessage(e.getMessage());
 		}
+		
+		CapitalUserFactory.save();
+		CapitalLotteryManager.save();
 		return true;
 	}
 	
