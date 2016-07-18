@@ -15,6 +15,9 @@ import com.htmlman1.capitaleconomy.commands.handler.PayWithCommand;
 import com.htmlman1.capitaleconomy.commands.handler.ShopCommands;
 import com.htmlman1.capitaleconomy.commands.handler.VaultCommands;
 import com.htmlman1.capitaleconomy.configuration.ConfigurationSettings;
+import com.htmlman1.capitaleconomy.listeners.GeneralListener;
+import com.htmlman1.capitaleconomy.listeners.SignShopListener;
+import com.htmlman1.capitaleconomy.listeners.VaultRegisterListener;
 import com.htmlman1.capitaleconomy.lottery.CapitalLotteryManager;
 
 public class CapitalEconomy extends JavaPlugin {
@@ -42,7 +45,11 @@ public class CapitalEconomy extends JavaPlugin {
 		this.getCommand("paywith").setExecutor(new PayWithCommand());
 		this.getCommand("shop").setExecutor(new ShopCommands()); // TODO
 		this.getCommand("vault").setExecutor(new VaultCommands());
-		//TODO: Register listeners
+		
+		this.getServer().getPluginManager().registerEvents(new GeneralListener(), this);
+		this.getServer().getPluginManager().registerEvents(new SignShopListener(), this);
+		this.getServer().getPluginManager().registerEvents(new VaultRegisterListener(), this);
+		
 		ConfigurationSettings.init(this.getConfig());
 		ServerShop.init(this.getConfig());
 		CapitalUserFactory.init(usersDir);

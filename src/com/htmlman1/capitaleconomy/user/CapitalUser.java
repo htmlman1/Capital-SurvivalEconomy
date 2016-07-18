@@ -36,7 +36,7 @@ public class CapitalUser {
 		this.setDebit(s.getDouble("userdata.debit"));
 		
 		Location vaultLoc = null;
-		if(s.isSet("vault.x")) {
+		if(s.isSet("userdata.vault.world")) {
 			vaultLoc = Location.deserialize(s.getConfigurationSection("userdata.vault").getValues(true));
 		}
 		
