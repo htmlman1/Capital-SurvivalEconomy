@@ -1,5 +1,7 @@
 package com.htmlman1.capitaleconomy.commands.handler;
 
+import java.io.IOException;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -35,7 +37,11 @@ public class LotteryCommands implements CommandExecutor {
 		}
 		
 		CapitalUserFactory.save();
-		CapitalLotteryManager.save();
+		try {
+			CapitalLotteryManager.save();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 	
