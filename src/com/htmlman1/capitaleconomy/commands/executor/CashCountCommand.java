@@ -23,7 +23,7 @@ public class CashCountCommand {
 					worth = ServerShop.getValue(player.getInventory());
 				}
 				
-				sender.sendMessage("§aThe items in your " + context + " are currently worth §6$" + worth + "§a.");
+				sender.sendMessage("§aThe items in your " + context + " are currently worth §6$" + CapitalMessages.toCashFormat(worth) + "§a.");
 			} else {
 				sender.sendMessage("§c/cash <all|hand>");
 			}

@@ -6,6 +6,7 @@ import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
 import org.bukkit.block.Sign;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 public class VaultUtils {
 	
@@ -26,6 +27,16 @@ public class VaultUtils {
 			return inv.getHolder() instanceof DoubleChest;
 		}
 		return false;
+	}
+	
+	public static boolean isEmpty(Inventory inventory) {
+		ItemStack[] contents = inventory.getContents();
+		if(contents != null) {
+			for(ItemStack content : contents) {
+				if(content != null) return false;
+			}
+		}
+		return true;
 	}
 	
 	public static boolean isVaultSign(Block block) {

@@ -52,7 +52,7 @@ public class CapitalVault {
 			if(ServerShop.hasBackedMaterials()) {
 				for(Material m : ServerShop.getBackedMaterials()) {
 					for(ItemStack content : contents) {
-						if(content.getType() == m) {
+						if(content != null && content.getType() == m) {
 							matAmount += content.getAmount();
 						}
 					}
@@ -62,7 +62,7 @@ public class CapitalVault {
 			}
 			
 			for(Map.Entry<Material, Integer> amount : amounts.entrySet()) {
-				result.append("§6" + amount.getValue() + " " + amount.getKey() + "§3, ");
+				if(amount.getValue() > 0) result.append("§6" + amount.getValue() + " " + amount.getKey() + "§3, ");
 			}
 			
 			return (amounts.size() > 1) ? result.toString().substring(0, result.toString().length() - 2) : result.toString();
@@ -71,16 +71,7 @@ public class CapitalVault {
 	}
 	
 	public double getValue() {
-		if(!contents.isEmpty()) {
-			double value = 0d;
-			
-			for(ItemStack content : contents) {
-				value += ServerShop.getValue(content);
-			}
-			
-			return value;
-		}
-		return 0d;
+		return ServerShop.getValue(this.contents);
 	}
 	
 	public void remove(Material type, int amount) {

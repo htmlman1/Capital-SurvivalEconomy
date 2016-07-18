@@ -16,7 +16,8 @@ public class VaultBalanceCommand {
 			CapitalUser user = CapitalUserFactory.getUser((Player) sender);
 			if(user.hasVault()) {
 				if(user.hasPermission(CapitalPermission.CHECK_THEIR_VAULT) || user.hasPermission(CapitalPermission.CHECK_ALL_VAULT)) {
-					user.sendMessage("§8You have §6$" + user.getCapitalVault().getValue() + " §8worth of items in your vault, consisting of " + user.getCapitalVault().getTypeAmounts());
+					String typeAmounts = user.getCapitalVault().getTypeAmounts();
+					user.sendMessage("§7You have §6$" + CapitalMessages.toCashFormat(user.getCapitalVault().getValue()) + " §7worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
 				} else {
 					throw new IllegalArgumentException(CapitalMessages.NO_PERMS);
 				}
@@ -25,7 +26,8 @@ public class VaultBalanceCommand {
 			}
 		} else if(sender instanceof ConsoleCommandSender) {
 			ServerCapitalUser user = CapitalUserFactory.getServerUser();
-			user.sendMessage("§8You have §6$" + user.getVault().getValue() + " §8worth of items in your vault, consisting of " + user.getVault().getTypeAmounts());
+			String typeAmounts = user.getVault().getTypeAmounts();
+			user.sendMessage("§7You have §6$" + CapitalMessages.toCashFormat(user.getVault().getValue()) + " §7worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
 		}
 	}
 	

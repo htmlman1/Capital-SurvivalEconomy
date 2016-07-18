@@ -20,6 +20,7 @@ import com.htmlman1.capitaleconomy.CapitalEconomy;
 import com.htmlman1.capitaleconomy.configuration.ConfigurationSettings;
 import com.htmlman1.capitaleconomy.money.util.PaymentType;
 import com.htmlman1.capitaleconomy.perms.CapitalPermission;
+import com.htmlman1.capitaleconomy.util.VaultUtils;
 import com.htmlman1.capitaleconomy.vault.CapitalVault;
 
 public class CapitalUser {
@@ -100,8 +101,13 @@ public class CapitalUser {
 	}
 	
 	public CapitalVault getCapitalVault() {
-		if(this.hasVault()) return new CapitalVault(Arrays.asList(this.vault.getInventory().getContents()));
-		else return null;
+		if(this.hasVault()) {
+			if(VaultUtils.isEmpty(this.vault.getInventory())) {
+				return new CapitalVault(null);
+			}
+			return new CapitalVault(Arrays.asList(this.vault.getInventory().getContents()));
+		}
+		return null;
 	}
 	
 	public DoubleChest getVault() {

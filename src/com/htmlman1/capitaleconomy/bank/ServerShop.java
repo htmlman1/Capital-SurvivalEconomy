@@ -1,6 +1,7 @@
 package com.htmlman1.capitaleconomy.bank;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,20 +42,29 @@ public class ServerShop {
 		return backedMaterials.get(m) != 0d;
 	}
 	
-	public static double getValue(Inventory i) {
-		if(i != null && i.getContents().length != 0) {
-			double value = 0d;
-			
-			for(ItemStack item : i.getContents()) {
-				value += getValue(item);
+	public static double getValue(ItemStack[] items) {
+		return getValue(Arrays.asList(items));
+	}
+	
+	public static double getValue(List<ItemStack> items) {
+		double value = 0d;
+		
+		if(items != null && items.size() > 0) {
+			for(ItemStack item : items) {
+				if(item != null && item.getType() != Material.AIR) value += getValue(item);
 			}
-			
-			return value;
 		}
-		return 0d;
+		
+		return value;
+	}
+	
+	public static double getValue(Inventory i) {
+		return getValue(i.getContents());
 	}
 	
 	public static double getValue(ItemStack i) {
+		if(i == null || i.getType() == Material.AIR) return 0d;
+		
 		int amount = i.getAmount();
 		Material type = i.getType();
 		
