@@ -1,0 +1,26 @@
+name: Capital-Economy
+author: htmlman1
+description: "A real, item-based economy system."
+version: 0.0.1-STABLE
+
+database: false
+main: com.htmlman1.capitaleconomy.CapitalEconomy
+
+commands:
+  capital:
+    description: "Administrator commands for Capital-Economy."
+  cash:
+    description: "Calculate the worth of the items in your inventory."
+    aliases: [gems]
+  debit:
+    description: "Show your cash balance."
+    aliases: [money, balance]
+  lotto:
+    description: "Participate in the lottery! Willing to try your luck?"
+    aliases: [lottery]
+  paywith:
+    description: "Set the method you use to pay for items in shops."
+  shop:
+    description: "Manage your shop."
+  vault:
+    description: "Manage your vault."

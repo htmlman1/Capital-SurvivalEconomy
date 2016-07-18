@@ -1,0 +1,34 @@
+# The configuration for Capital-SurvivalEconomy.
+# ----------------------------------------------
+
+# Server-backed prices and values.
+# For item names, please see https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html.
+prices:
+  'IRON_INGOT': 0.01
+  'IRON_BLOCK': 0.09
+  'GOLD_NUGGET': 0.81
+  'GOLD_INGOT': 7.29
+  'GOLD_BLOCK': 65.61
+  'DIAMOND': 590.49
+  'DIAMOND_BLOCK': 5314.41
+  'EMERALD': 47829.69
+  'EMERALD_BLOCK': 430467.21
+  
+# Default payment method for players. Can either be "debit" or "cash".
+default-payment: debit
+  
+# Should this plugin disable villager trades?
+disable-trades: false
+
+# Configuration section for taxes. Please do not use percentage signs; just input the number.
+# A value of "8" will be read as "8%" by the plugin.
+taxes:
+  contexts:
+    bank: 0
+    global: 8
+  distribution:
+    server-lottery: 75
+    server-market: 25
+    
+# The price of a lottery ticket.
+ticket-price: 25
