@@ -2,37 +2,29 @@ package com.htmlman1.capitaleconomy.event;
 
 import java.util.UUID;
 
-import org.bukkit.block.DoubleChest;
-import org.bukkit.block.Sign;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public final class VaultRegisterEvent extends Event implements Cancellable {
+public final class VaultUnregisterEvent extends Event implements Cancellable {
 	
     private static final HandlerList handlers = new HandlerList();
     private UUID owner;
-    private Sign vaultSign;
-    private DoubleChest vault;
-    private boolean cancelled;
+	private RemovalMethod method;
+	private boolean cancelled;
 
-    public VaultRegisterEvent(UUID owner, Sign vaultSign, DoubleChest vault) {
+    public VaultUnregisterEvent(UUID owner, RemovalMethod method) {
         this.owner = owner;
-        this.vaultSign = vaultSign;
-        this.vault = vault;
+        this.method = method;
     }
 
     public UUID getOwner() {
 		return owner;
 	}
     
-    public Sign getVaultSign() {
-    	return vaultSign;
+    public RemovalMethod getRemovalMethod() {
+    	return this.method;
     }
-
-	public DoubleChest getVault() {
-		return vault;
-	}
 	
 	public boolean isCancelled() {
 		return cancelled;
@@ -48,6 +40,10 @@ public final class VaultRegisterEvent extends Event implements Cancellable {
 
     public static HandlerList getHandlerList() {
         return handlers;
+    }
+    
+    public enum RemovalMethod {
+    	BREAK, COMMAND
     }
     
 }

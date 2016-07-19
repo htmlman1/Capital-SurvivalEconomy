@@ -20,7 +20,7 @@ import com.htmlman1.capitaleconomy.CapitalEconomy;
 import com.htmlman1.capitaleconomy.configuration.ConfigurationSettings;
 import com.htmlman1.capitaleconomy.money.util.PaymentType;
 import com.htmlman1.capitaleconomy.perms.CapitalPermission;
-import com.htmlman1.capitaleconomy.util.VaultUtils;
+import com.htmlman1.capitaleconomy.util.BlockUtils;
 import com.htmlman1.capitaleconomy.vault.CapitalVault;
 
 public class CapitalUser {
@@ -102,7 +102,7 @@ public class CapitalUser {
 	
 	public CapitalVault getCapitalVault() {
 		if(this.hasVault()) {
-			if(VaultUtils.isEmpty(this.vault.getInventory())) {
+			if(BlockUtils.isEmpty(this.vault.getInventory())) {
 				return new CapitalVault(null);
 			}
 			return new CapitalVault(Arrays.asList(this.vault.getInventory().getContents()));
@@ -116,6 +116,10 @@ public class CapitalUser {
 	
 	public boolean hasVault() {
 		return vault != null;
+	}
+	
+	public void removeVault() {
+		this.setVault(null);
 	}
 
 	public void setVault(DoubleChest vault) {
@@ -145,6 +149,10 @@ public class CapitalUser {
 	public String getDisplayName() {
 		Player player = Bukkit.getPlayer(this.getUUID());
 		if(player != null) return player.getDisplayName(); else return "";
+	}
+	
+	public Player getPlayer() {
+		return Bukkit.getPlayer(this.getUUID());
 	}
 	
 	public boolean hasPermission(CapitalPermission permission) {

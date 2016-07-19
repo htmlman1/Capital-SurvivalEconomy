@@ -39,6 +39,8 @@ public class CapitalUserFactory {
 	
 	@SuppressWarnings("deprecation")
 	public static CapitalUser getUser(String username) {
+		Player player = Bukkit.getPlayer(username);
+		if(player == null) return getUser(Bukkit.getOfflinePlayer(username).getUniqueId());
 		return getUser(Bukkit.getPlayer(username));
 	}
 
