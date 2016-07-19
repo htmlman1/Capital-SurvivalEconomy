@@ -61,10 +61,17 @@ public class ShopSign {
 	}
 	
 	private static boolean isValidSign(Sign sign) {
-		if(sign.getLine(0).endsWith("[CapitalShop]")) {
+		if(sign.getLine(0).equalsIgnoreCase("[CapitalShop]")) {
 			if(ValidationUtils.isDouble(sign.getLine(3))) return true;
 		}
 		return false;
 	}
+	private static boolean parseMaterialAndQuantity(Sign sign){
+        if(sign.getLine(0).equalsIgnoreCase("[CapitalShop]")) {
+            Material mat = Material.getMaterial(sign.getLine(1).split(":")[0]));
+            int quantity = ValidationUtils.isInt(sign.getLine(1).split(":")[1]) ? Integer.parseInt(sign.getLine(1).split(":")[1]) : 0;
+            return mat == null || quantity == 0;
+        }
+    }
 	
 }

@@ -10,5 +10,13 @@ public class ValidationUtils {
 			return false;
 		}
 	}
+    public static boolean isInt(String test) {
+        try {
+            Integer.parseInt(test);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 	
 }

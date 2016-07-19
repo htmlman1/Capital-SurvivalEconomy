@@ -19,7 +19,8 @@ public enum CapitalPermission {
 	SET_PAY_PREF("capital.shop.createcapital.pref"),
 	SHOW_TOP_DEBIT("capital.bal.top"),
 	TAKE_MONEY("capital.take"),
-	USE_SHOP("capital.shop.use");
+	USE_SHOP("capital.shop.use"),
+	CREATE_SHOP("capital.shop.create");
 	
 	private String permission;
 	

@@ -42,7 +42,7 @@ public class CapitalEconomy extends JavaPlugin {
 		this.getCommand("paywith").setExecutor(new PayWithCommand());
 		this.getCommand("shop").setExecutor(new ShopCommands()); // TODO
 		this.getCommand("vault").setExecutor(new VaultCommands());
-		
+		//TODO: Register listeners
 		ConfigurationSettings.init(this.getConfig());
 		ServerShop.init(this.getConfig());
 		CapitalUserFactory.init(usersDir);
