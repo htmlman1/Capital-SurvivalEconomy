@@ -20,7 +20,8 @@ public enum CapitalPermission {
 	SHOW_TOP_DEBIT("capital.bal.top"),
 	TAKE_MONEY("capital.take"),
 	USE_SHOP("capital.shop.use"),
-	CREATE_SHOP("capital.shop.create");
+	CREATE_SHOP("capital.shop.create"),
+	BREAK_SHOP("capital.shop.break");
 	
 	private String permission;
 	

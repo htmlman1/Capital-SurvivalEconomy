@@ -68,10 +68,11 @@ public class ShopSign {
 	}
 	private static boolean parseMaterialAndQuantity(Sign sign){
         if(sign.getLine(0).equalsIgnoreCase("[CapitalShop]")) {
-            Material mat = Material.getMaterial(sign.getLine(1).split(":")[0]));
+            Material mat = Material.getMaterial(sign.getLine(1).split(":")[0]);
             int quantity = ValidationUtils.isInt(sign.getLine(1).split(":")[1]) ? Integer.parseInt(sign.getLine(1).split(":")[1]) : 0;
             return mat == null || quantity == 0;
         }
+        return false;
     }
 	
 }
