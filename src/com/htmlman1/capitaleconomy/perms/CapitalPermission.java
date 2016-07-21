@@ -21,7 +21,8 @@ public enum CapitalPermission {
 	TAKE_MONEY("capital.take"),
 	USE_SHOP("capital.shop.use"),
 	CREATE_SHOP("capital.shop.create"),
-	BREAK_SHOP("capital.shop.break");
+	BREAK_SHOP("capital.shop.break"),
+	BREAK_SHOP_OTHERS("capital.shop.break.others");
 	
 	private String permission;
 	

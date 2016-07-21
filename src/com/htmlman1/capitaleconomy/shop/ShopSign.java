@@ -15,7 +15,8 @@ public class ShopSign {
 	private UUID owner;
 	private Material wareType;
 	private double price;
-	
+	private Integer quantity;
+
 	public ShopSign(Block b) {
 		this((Sign) b.getState());
 	}
@@ -23,11 +24,8 @@ public class ShopSign {
 	@SuppressWarnings("deprecation")
 	public ShopSign(Sign sign) {
 		OfflinePlayer owner = Bukkit.getOfflinePlayer(sign.getLine(1));
-		Material wareType = Material.getMaterial(sign.getLine(2));
 		double price = Double.parseDouble(sign.getLine(3));
-		
 		this.setOwner(owner.getUniqueId());
-		this.setWareType(wareType);
 		this.setPrice(price);
 	}
 
@@ -51,6 +49,14 @@ public class ShopSign {
 		return price;
 	}
 
+    private void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getQuantity() {
+        return quantity;//Quantity available
+    }
+
 	private void setPrice(double price) {
 		this.price = price;
 	}
@@ -66,13 +72,17 @@ public class ShopSign {
 		}
 		return false;
 	}
-	private static boolean parseMaterialAndQuantity(Sign sign){
+	public static boolean parseMaterialAndQuantity(Block block){
+		Sign sign = (Sign)block.getState();//Only going to get passed sign blocks.
         if(sign.getLine(0).equalsIgnoreCase("[CapitalShop]")) {
-            Material mat = Material.getMaterial(sign.getLine(1).split(":")[0]);
-            int quantity = ValidationUtils.isInt(sign.getLine(1).split(":")[1]) ? Integer.parseInt(sign.getLine(1).split(":")[1]) : 0;
-            return mat == null || quantity == 0;
+            Material mat = Material.getMaterial(sign.getLine(2).split(":")[0]);
+            int quantity = ValidationUtils.isInt(sign.getLine(2).split(":")[1]) ? Integer.parseInt(sign.getLine(2).split(":")[1]) : 0;
+            return mat != null || quantity != 0;
         }
         return false;
     }
-	
+
+    public static boolean isNameRegistered(Block block) {
+        return false;
+    }
 }
