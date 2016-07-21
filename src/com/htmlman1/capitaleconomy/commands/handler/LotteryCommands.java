@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import com.htmlman1.capitaleconomy.api.CapitalUserFactory;
 import com.htmlman1.capitaleconomy.commands.executor.LotteryBuyCommand;
 import com.htmlman1.capitaleconomy.commands.executor.LotteryCheckCommand;
-import com.htmlman1.capitaleconomy.lottery.CapitalLotteryManager;
+import com.htmlman1.capitaleconomy.lottery.LotteryTicketManager;
 
 public class LotteryCommands implements CommandExecutor {
 	
@@ -38,7 +38,7 @@ public class LotteryCommands implements CommandExecutor {
 		
 		CapitalUserFactory.save();
 		try {
-			CapitalLotteryManager.save();
+			LotteryTicketManager.save();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

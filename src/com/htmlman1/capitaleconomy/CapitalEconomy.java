@@ -18,7 +18,7 @@ import com.htmlman1.capitaleconomy.configuration.ConfigurationSettings;
 import com.htmlman1.capitaleconomy.listeners.GeneralListener;
 import com.htmlman1.capitaleconomy.listeners.SignShopListener;
 import com.htmlman1.capitaleconomy.listeners.VaultRegisterListener;
-import com.htmlman1.capitaleconomy.lottery.CapitalLotteryManager;
+import com.htmlman1.capitaleconomy.lottery.LotteryTicketManager;
 
 public class CapitalEconomy extends JavaPlugin {
 	
@@ -55,7 +55,7 @@ public class CapitalEconomy extends JavaPlugin {
 		ConfigurationSettings.init(this.getConfig());
 		ServerShop.init(this.getConfig());
 		CapitalUserFactory.init(usersDir);
-		CapitalLotteryManager.init(purchaseFile);
+		LotteryTicketManager.init(purchaseFile);
 	}
 	
 	@Override

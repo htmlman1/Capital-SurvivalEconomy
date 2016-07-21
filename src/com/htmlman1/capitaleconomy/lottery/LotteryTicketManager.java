@@ -14,7 +14,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.htmlman1.capitaleconomy.CapitalEconomy;
 
-public class CapitalLotteryManager {
+public class LotteryTicketManager {
 	
 	private static Map<UUID, Integer> ticketPurchases = new HashMap<UUID, Integer>();
 	private static List<Integer> registeredNumbers = new ArrayList<Integer>();
