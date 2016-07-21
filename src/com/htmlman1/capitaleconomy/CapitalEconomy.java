@@ -31,6 +31,8 @@ public class CapitalEconomy extends JavaPlugin {
 		plugin = this;
 		this.saveDefaultConfig();
 		this.saveResource("purchases.yml", false);
+		this.saveResource("signs.yml", false);
+
 		
 		usersDir = new File(this.getDataFolder() + File.separator + "users");
 		purchaseFile = new File(this.getDataFolder() + File.separator + "purchases.yml");
@@ -47,7 +49,7 @@ public class CapitalEconomy extends JavaPlugin {
 		this.getCommand("vault").setExecutor(new VaultCommands());
 		
 		this.getServer().getPluginManager().registerEvents(new GeneralListener(), this);
-		this.getServer().getPluginManager().registerEvents(new SignShopListener(), this);
+		this.getServer().getPluginManager().registerEvents(new SignShopListener(this), this);
 		this.getServer().getPluginManager().registerEvents(new VaultRegisterListener(), this);
 		
 		ConfigurationSettings.init(this.getConfig());

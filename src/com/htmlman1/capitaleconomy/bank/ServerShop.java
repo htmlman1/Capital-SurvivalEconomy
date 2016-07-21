@@ -19,7 +19,7 @@ public class ServerShop {
 		Map<String, Object> values = s.getConfigurationSection("prices").getValues(true);
 		if(values != null && !values.isEmpty()) {
 			for(Map.Entry<String, Object> value : values.entrySet()) {
-				backedMaterials.put(Material.getMaterial(value.getKey()), (double) value.getValue());
+				backedMaterials.put(Material.getMaterial(value.getKey()), Double.valueOf(value.toString()));
 			}
 		}
 	}
