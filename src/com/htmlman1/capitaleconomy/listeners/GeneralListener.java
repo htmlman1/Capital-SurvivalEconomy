@@ -10,17 +10,20 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.material.Sign;
 
 import com.htmlman1.capitaleconomy.api.CapitalUserFactory;
 import com.htmlman1.capitaleconomy.commands.executor.CapitalMessages;
+import com.htmlman1.capitaleconomy.configuration.ConfigurationSettings;
 import com.htmlman1.capitaleconomy.event.VaultRegisterEvent;
 import com.htmlman1.capitaleconomy.event.VaultUnregisterEvent;
 import com.htmlman1.capitaleconomy.event.VaultUnregisterEvent.RemovalMethod;
@@ -80,6 +83,16 @@ public class GeneralListener implements Listener {
 					player.sendMessage("§cYou don't have permission to modify this vault!");
 					event.setCancelled(true);
 				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+		if(event.getRightClicked().getType() == EntityType.VILLAGER) {
+			if(ConfigurationSettings.disableTrades) {
+				event.getPlayer().sendMessage("§cVillager trades are currently disabled.");
+				event.setCancelled(true);
 			}
 		}
 	}
