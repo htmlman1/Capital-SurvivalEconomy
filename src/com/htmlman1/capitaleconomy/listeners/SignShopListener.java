@@ -11,7 +11,7 @@ import com.htmlman1.capitaleconomy.shop.ShopSign;
 public class SignShopListener implements Listener {
     @EventHandler
     public void onShopCreate(SignChangeEvent event){
-        if(ShopSign.isValidSign(event.getBlock()) && ShopSign.isNameRegistered(event.getBlock()) && ShopSign.parseMaterialAndQuantity(event.getBlock())){
+        if(ShopSign.isValidSign(event.getBlock()) && ShopSign.parseMaterialAndQuantity(event.getBlock())){
             ShopSign shop = new ShopSign(event.getBlock());
 
         }

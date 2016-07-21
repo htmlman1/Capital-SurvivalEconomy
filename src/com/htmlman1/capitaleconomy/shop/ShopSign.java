@@ -82,7 +82,4 @@ public class ShopSign {
         return false;
     }
 
-    public static boolean isNameRegistered(Block block) {
-        return false;
-    }
 }
