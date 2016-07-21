@@ -19,7 +19,7 @@ public class SignShopListener implements Listener {
     public void onShopCreate(SignChangeEvent event){
         if(ShopSign.isValidSign(event.getBlock()) && ShopSign.parseMaterialAndQuantity(event.getBlock())){
             ShopSign shop = new ShopSign(event.getBlock());
-            CapitalShop cShop = new CapitalShop();
+            //CapitalShop cShop = new CapitalShop();
 
         }
     }
