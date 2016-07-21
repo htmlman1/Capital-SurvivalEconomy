@@ -7,4 +7,5 @@
     - Fourth line must be an amount, formatted as a double and rounded to the nearest hundredth
   + When players trade with another's shop, they are taxed according to a configurable value (ConfigurationSettings.globalTax)
 - Vault
+  + Add /vault unregister command in case BlockBreakEvent handler fails
 - Lottery
