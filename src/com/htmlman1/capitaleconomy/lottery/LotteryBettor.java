@@ -4,11 +4,11 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import com.htmlman1.capitaleconomy.item.CapitalItems;
 
-// A convenience class for managing players with lottery tickets in their inventories.
 public class LotteryBettor {
 	
 	private UUID playerID;
@@ -25,17 +25,45 @@ public class LotteryBettor {
 		return this.playerID;
 	}
 	
-	public boolean isValid() {
+	public boolean isPlayer() {
 		return this.getPlayer() != null;
 	}
 	
-	public boolean hasTicket() {
-		if(this.isValid()) {
-			for(ItemStack i : this.getPlayer().getInventory().getContents()) {
-				if(i != null && CapitalItems.isLotteryTicket(i)) return true;
+	public ItemStack getTicket() {
+		if(this.hasTicket()) {
+			Inventory inv = this.getPlayer().getInventory();
+			return inv.getItem(this.getTicketIndex());
+		}
+		return null;
+	}
+	
+	private int getTicketIndex() {
+		Inventory inv = this.getPlayer().getInventory();
+		if(this.isPlayer()) {
+			for(int i = 0; i < inv.getContents().length; i++) {
+				ItemStack item = inv.getItem(i);
+				if(item != null && CapitalItems.isLotteryTicket(item)) return i;
 			}
 		}
-		return false;
+		return -1;
+	}
+	
+	public int getTicketNumber() {
+		if(this.hasTicket()) {
+			return CapitalItems.getTicketNumber(this.getTicket());
+		}
+		return -1;
+	}
+	
+	public boolean hasTicket() {
+		return getTicketIndex() > -1;
+	}
+	
+	public void removeTicket() {
+		if(this.hasTicket()) {
+			Inventory inv = this.getPlayer().getInventory();
+			inv.remove(this.getTicket());
+		}
 	}
 	
 }

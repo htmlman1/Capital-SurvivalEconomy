@@ -42,4 +42,11 @@ public class CapitalItems {
 		return false;
 	}
 	
+	public static int getTicketNumber(ItemStack i) {
+		if(isLotteryTicket(i)) {
+			return Integer.parseInt(i.getItemMeta().getLore().get(0));
+		}
+		return -1;
+	}
+	
 }
