@@ -1,5 +1,6 @@
 package com.htmlman1.capitaleconomy.commands.executor;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -29,8 +30,8 @@ public class MoneyTakeCommand {
 			if(ValidationUtils.isDouble(args[1])) {
 				double amount = Double.parseDouble(args[1]);
 				target.decreaseDebit(amount);
-				sender.sendMessage("§6$" + amount + " of §b" + target.getDisplayName() + " §c's money disappeared down a black hole.");
-				target.sendMessage("§6$" + amount + " §cof your money disappeared down a black hole.");
+				sender.sendMessage(ChatColor.GOLD+"$" + amount + " of " +ChatColor.BLUE + target.getDisplayName() + ChatColor.RED+" 's money disappeared down a black hole.");
+				target.sendMessage(ChatColor.GOLD+"$" + amount + ChatColor.RED+" of your money disappeared down a black hole.");
 			} else {
 				sender.sendMessage(CapitalMessages.USE_NUMBER);
 			}

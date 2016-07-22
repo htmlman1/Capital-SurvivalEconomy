@@ -41,7 +41,7 @@ public class GeneralListener implements Listener {
 			String ownerName = BlockUtils.getVaultOwner((org.bukkit.block.Sign) broken.getState());
 			
 			if(!breaker.getName().equals(ownerName) && !breaker.hasPermission(CapitalPermission.CHECK_ALL_VAULT.getApplicablePermission())) {
-				breaker.sendMessage("§cYou don't have permission to break this.");
+				breaker.sendMessage(ChatColor.RED+"You don't have permission to break this.");
 				event.setCancelled(true);
 			} else {
 				Bukkit.getPluginManager().callEvent(new VaultUnregisterEvent(CapitalUserFactory.getUser(ownerName).getUUID(), RemovalMethod.BREAK));
@@ -80,7 +80,7 @@ public class GeneralListener implements Listener {
 				org.bukkit.block.Sign capitalSign = BlockUtils.getAttachedVaultSign(BlockUtils.toDoubleChest(b));
 				String ownerName = BlockUtils.getVaultOwner(capitalSign);
 				if(!ownerName.equals(player.getName()) && !player.hasPermission(CapitalPermission.CHECK_ALL_VAULT.getApplicablePermission())) {
-					player.sendMessage("§cYou don't have permission to modify this vault!");
+					player.sendMessage(ChatColor.RED+"You don't have permission to modify this vault!");
 					event.setCancelled(true);
 				}
 			}
@@ -91,7 +91,7 @@ public class GeneralListener implements Listener {
 	public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
 		if(event.getRightClicked().getType() == EntityType.VILLAGER) {
 			if(ConfigurationSettings.disableTrades) {
-				event.getPlayer().sendMessage("§cVillager trades are currently disabled.");
+				event.getPlayer().sendMessage(ChatColor.RED+"Villager trades are currently disabled.");
 				event.setCancelled(true);
 			}
 		}
@@ -112,11 +112,11 @@ public class GeneralListener implements Listener {
 								Bukkit.getPluginManager().callEvent(new VaultRegisterEvent(player.getUniqueId(), (org.bukkit.block.Sign) placed.getState(), BlockUtils.toDoubleChest(against)));
 							} else {
 								placed.breakNaturally();
-								player.sendMessage("§cThat chest is already registered!");
+								player.sendMessage(ChatColor.RED+"That chest is already registered!");
 							}
 						} else {
 							placed.breakNaturally();
-							player.sendMessage("§cYou can only have one vault.");
+							player.sendMessage(ChatColor.RED+"You can only have one vault.");
 						}
 					} else {
 						placed.breakNaturally();
@@ -124,7 +124,7 @@ public class GeneralListener implements Listener {
 					}
 				} else {
 					placed.breakNaturally();
-					player.sendMessage("§cThis kind of sign can only be used with double chests.");
+					player.sendMessage(ChatColor.RED+"This kind of sign can only be used with double chests.");
 				}
 			}
 		}

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -62,7 +63,7 @@ public class CapitalVault {
 			}
 			
 			for(Map.Entry<Material, Integer> amount : amounts.entrySet()) {
-				if(amount.getValue() > 0) result.append("§6" + amount.getValue() + " " + amount.getKey() + "§3, ");
+				if(amount.getValue() > 0) result.append(ChatColor.GOLD + amount.getValue().toString() + " " + amount.getKey() + ChatColor.BLUE+", ");
 			}
 			
 			return (amounts.size() > 1) ? result.toString().substring(0, result.toString().length() - 2) : result.toString();

@@ -1,5 +1,6 @@
 package com.htmlman1.capitaleconomy.commands.executor;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -23,8 +24,8 @@ public class UserPayCommand {
 							if(user.canAfford(amount)) {
 								user.pay(target, amount);
 								
-								user.sendMessage("§aYou paid §b" + target.getDisplayName() + " §6$" + amount + "§a.");
-								target.sendMessage("§aYou received §6$" + amount + " §afrom §b" + user + "§a.");
+								user.sendMessage(ChatColor.GREEN+"You paid" +ChatColor.BLUE + target.getDisplayName() + ChatColor.GOLD+"$" + amount + ChatColor.GREEN+".");
+								target.sendMessage(ChatColor.GREEN+"You received"+ ChatColor.GOLD+"$" + amount + ChatColor.GREEN+"from "+ ChatColor.BLUE + user + ChatColor.GREEN+".");
 							} else {
 								throw new IllegalArgumentException(CapitalMessages.CANNOT_AFFORD);
 							}
@@ -51,7 +52,7 @@ public class UserPayCommand {
 				}
 			}
 		} else {
-			sender.sendMessage("§c/pay <username> <amount>");
+			sender.sendMessage(ChatColor.RED+"/pay <username> <amount>");
 		}
 	}
 	

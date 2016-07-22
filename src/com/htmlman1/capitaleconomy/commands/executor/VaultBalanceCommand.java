@@ -1,5 +1,6 @@
 package com.htmlman1.capitaleconomy.commands.executor;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -17,17 +18,17 @@ public class VaultBalanceCommand {
 			if(user.hasVault()) {
 				if(user.hasPermission(CapitalPermission.CHECK_THEIR_VAULT) || user.hasPermission(CapitalPermission.CHECK_ALL_VAULT)) {
 					String typeAmounts = user.getCapitalVault().getTypeAmounts();
-					user.sendMessage("§7You have §6$" + CapitalMessages.toCashFormat(user.getCapitalVault().getValue()) + " §7worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
+					user.sendMessage(ChatColor.GRAY+"You have ChatColor.GOLD+"$" + CapitalMessages.toCashFormat(user.getCapitalVault().getValue()) + " ï¿½7worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
 				} else {
 					throw new IllegalArgumentException(CapitalMessages.NO_PERMS);
 				}
 			} else {
-				throw new IllegalArgumentException("§cYou don't have a vault registered.");
+				throw new IllegalArgumentException(ChatColor.RED+"You don't have a vault registered.");
 			}
 		} else if(sender instanceof ConsoleCommandSender) {
 			ServerCapitalUser user = CapitalUserFactory.getServerUser();
 			String typeAmounts = user.getVault().getTypeAmounts();
-			user.sendMessage("§7You have §6$" + CapitalMessages.toCashFormat(user.getVault().getValue()) + " §7worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
+			user.sendMessage(ChatColor.GRAY+"You have ChatColor.GOLD+"$" + CapitalMessages.toCashFormat(user.getVault().getValue()) + " ï¿½7worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
 		}
 	}
 	

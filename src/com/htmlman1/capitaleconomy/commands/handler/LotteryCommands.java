@@ -2,6 +2,7 @@ package com.htmlman1.capitaleconomy.commands.handler;
 
 import java.io.IOException;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,7 +14,7 @@ import com.htmlman1.capitaleconomy.lottery.LotteryTicketManager;
 
 public class LotteryCommands implements CommandExecutor {
 	
-	private static final String HELP = "§c/lottery <bal|buy>";
+	private static final String HELP = ChatColor.RED+"/lottery <bal|buy>";
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String name, String[] args) {

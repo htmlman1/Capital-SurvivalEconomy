@@ -1,5 +1,6 @@
 package com.htmlman1.capitaleconomy.commands.executor;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -10,7 +11,7 @@ import com.htmlman1.capitaleconomy.user.CapitalUser;
 
 public class PayPrefCommand {
 
-	private static final String HELP = "§c/paywith <both|cash|debit>";
+	private static final String HELP = ChatColor.RED+"/paywith <both|cash|debit>";
 
 	public static void execute(CommandSender sender, String[] args) throws IllegalArgumentException {
 		boolean isPlayer = (sender instanceof Player);
@@ -23,9 +24,9 @@ public class PayPrefCommand {
 					String type = args[0].toUpperCase();
 					if(PaymentType.isPaymentType(type)) {
 						user.setPaymentType(PaymentType.getType(type));
-						sender.sendMessage("§aYour preferred payment method was set to §6§l" + type + "§a.");
+						sender.sendMessage(ChatColor.GREEN+"Your preferred payment method was set to"+ChatColor.GOLD+ ChatColor.UNDERLINE + type + ChatColor.GREEN+".");
 					} else {
-						throw new IllegalArgumentException("§cPayment type '" + type + "' not recognized.");
+						throw new IllegalArgumentException(ChatColor.RED+"Payment type '" + type + "' not recognized.");
 					}
 				} else {
 					throw new IllegalArgumentException(CapitalMessages.NO_PERMS);

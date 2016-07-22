@@ -3,6 +3,7 @@ package com.htmlman1.capitaleconomy.listeners;
 import java.io.IOException;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,21 +18,21 @@ import com.htmlman1.capitaleconomy.user.CapitalUser;
 public class VaultRegisterListener implements Listener {
 
 	@EventHandler
-	public void onVaultRegister(VaultRegisterEvent event) {
+	public void onVaultRegister(final VaultRegisterEvent event) {
 		if(!event.isCancelled()) {
-			CapitalUser user = CapitalUserFactory.getUser(event.getOwner());
+			final CapitalUser user = CapitalUserFactory.getUser(event.getOwner());
 			user.setVault(event.getVault());
 			
 			Bukkit.getScheduler().runTaskLater(CapitalEconomy.plugin, new Runnable() {
 				public void run() {
 					Sign vaultSign = event.getVaultSign();
-					vaultSign.setLine(0, "§3[§6CapitalVault§3]");
+					vaultSign.setLine(0, "ï¿½3[ChatColor.GOLD+"CapitalVaultï¿½3]");
 					vaultSign.setLine(1, user.getPlayer().getName());
 					vaultSign.update();
 				}
 			}, 1l);
 			
-			user.sendMessage("§aYou have registered a new vault.");
+			user.sendMessage(ChatColor.GREEN+"You have registered a new vault.");
 			
 			try {
 				user.save();
@@ -48,7 +49,7 @@ public class VaultRegisterListener implements Listener {
 		CapitalUser owner = CapitalUserFactory.getUser(event.getOwner());
 		owner.removeVault();
 		
-		owner.sendMessage("§cYour vault was unregistered.");
+		owner.sendMessage(ChatColor.RED+"Your vault was unregistered.");
 		
 		try {
 			owner.save();

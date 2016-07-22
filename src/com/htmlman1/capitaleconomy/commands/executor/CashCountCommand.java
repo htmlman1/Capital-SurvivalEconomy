@@ -1,5 +1,6 @@
 package com.htmlman1.capitaleconomy.commands.executor;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -23,9 +24,9 @@ public class CashCountCommand {
 					worth = ServerShop.getValue(player.getInventory());
 				}
 				
-				sender.sendMessage("§aThe items in your " + context + " are currently worth §6$" + CapitalMessages.toCashFormat(worth) + "§a.");
+				sender.sendMessage(ChatColor.GREEN+"The items in your " + context + " are currently worth ChatColor.GOLD+"$" + CapitalMessages.toCashFormat(worth) + ChatColor.GREEN+".");
 			} else {
-				sender.sendMessage("§c/cash <all|hand>");
+				sender.sendMessage(ChatColor.RED+"/cash <all|hand>");
 			}
 		} else {
 			throw new IllegalArgumentException(CapitalMessages.BE_PLAYER);

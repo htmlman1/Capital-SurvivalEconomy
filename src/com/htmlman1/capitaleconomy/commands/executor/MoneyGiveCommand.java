@@ -1,5 +1,6 @@
 package com.htmlman1.capitaleconomy.commands.executor;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -28,8 +29,8 @@ public class MoneyGiveCommand {
 			if(ValidationUtils.isDouble(args[1])) {
 				double amount = Double.parseDouble(args[1]);
 				target.increaseDebit(amount);
-				sender.sendMessage("§b" + target.getDisplayName() + " §amagically received §6$" + amount + "§a.");
-				target.sendMessage("§aYou magically received §6$" + amount + "§a from the heavens.");
+				sender.sendMessage(ChatColor.BLUE + target.getDisplayName() + ChatColor.GREEN+"magically received "+ChatColor.GOLD+"$" + amount + ChatColor.GREEN+".");
+				target.sendMessage(ChatColor.GREEN+"You magically received"+ChatColor.GOLD+"$" + amount + ChatColor.GREEN+" from the heavens.");
 			} else {
 				sender.sendMessage(CapitalMessages.USE_NUMBER);
 			}
