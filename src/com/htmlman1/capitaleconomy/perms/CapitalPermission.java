@@ -22,7 +22,8 @@ public enum CapitalPermission {
 	USE_SHOP("capital.shop.use"),
 	CREATE_SHOP("capital.shop.create"),
 	BREAK_SHOP("capital.shop.break"),
-	BREAK_SHOP_OTHERS("capital.shop.break.others");
+	BREAK_SHOP_OTHERS("capital.shop.break.others"),
+	RELOAD_CONFIG("capital.reload");
 	
 	private String permission;
 	

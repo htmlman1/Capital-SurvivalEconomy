@@ -12,6 +12,7 @@ public class ConfigurationSettings {
 	public static double globalTax = 8d;
 	public static double lotteryDist = 75d;
 	public static double marketDist = 25d;
+	public static int lottoCountdown = 45;
 	public static double ticketPrice = 25d;
 	
 	public static void init(Configuration c) {
@@ -21,7 +22,8 @@ public class ConfigurationSettings {
 		globalTax = c.getDouble("taxes.contexts.global");
 		lotteryDist = c.getDouble("taxes.distribution.server-lottery");
 		marketDist = c.getDouble("taxes.distribution.server-market");
-		ticketPrice = c.getDouble("ticket-price");
+		lottoCountdown = c.getInt("lottery.countdown");
+		ticketPrice = c.getDouble("lottery.ticket-price");
 	}
 	
 }

@@ -52,10 +52,7 @@ public class CapitalEconomy extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new SignShopListener(this), this);
 		this.getServer().getPluginManager().registerEvents(new VaultRegisterListener(), this);
 		
-		ConfigurationSettings.init(this.getConfig());
-		ServerShop.init(this.getConfig());
-		CapitalUserFactory.init(usersDir);
-		LotteryTicketManager.init(purchaseFile);
+		loadValues();
 	}
 	
 	@Override
@@ -67,6 +64,14 @@ public class CapitalEconomy extends JavaPlugin {
 		for(File f : files) {
 			if(!f.exists()) f.mkdir();
 		}
+	}
+	
+	public static void loadValues() {
+		plugin.reloadConfig();
+		ConfigurationSettings.init(plugin.getConfig());
+		ServerShop.init(plugin.getConfig());
+		CapitalUserFactory.init(usersDir);
+		LotteryTicketManager.init(purchaseFile);
 	}
 	
 }
