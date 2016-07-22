@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.htmlman1.capitaleconomy.util.Serialization;
+import com.sun.deploy.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Sign;
@@ -15,12 +16,7 @@ import com.htmlman1.capitaleconomy.user.CapitalUser;
 public class CapitalShop {
 
 	private CapitalUser owner;
-	private List<ShopSign> signs = new ArrayList<ShopSign>();//Fix NPE
-	ConfigurationSection s;
-
-	public CapitalShop(ConfigurationSection s) {
-		this.s = s;
-	}
+	private static List<ShopSign> signs = new ArrayList<ShopSign>();//Fix NPE
 
 	public CapitalShop(UUID owner, List<ShopSign> signs) {
 
@@ -34,15 +30,11 @@ public class CapitalShop {
 		this.owner = owner;
 	}
 
-	public List<ShopSign> getSigns() {
+	public static List<ShopSign> getSigns() {
 		return signs;
 	}
 
-	public void setSigns(List<ShopSign> signs) {
-		this.signs = signs;
-	}
-
-	public void init() {
+	public static void init(ConfigurationSection s) {
         for(String locString : s.getStringList("Locations")){
             getSigns().add(new ShopSign((Sign)Serialization.fromLocationString(locString).getBlock().getState()));
         }
