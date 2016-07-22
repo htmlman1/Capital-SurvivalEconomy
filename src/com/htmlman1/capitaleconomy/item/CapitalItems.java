@@ -3,6 +3,7 @@ package com.htmlman1.capitaleconomy.item;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -21,7 +22,7 @@ public class CapitalItems {
 		int ticketNumber;
 		ticketNumber = LotteryTicketManager.getNextLotteryNumber();
 		
-		ticketMeta.setLore(Arrays.asList(String.valueOf(ticketNumber), "�9Server Powerball"));
+		ticketMeta.setLore(Arrays.asList(String.valueOf(ticketNumber), ChatColor.BLUE+"Server Powerball"));
 		return ticket;
 	}
 	
@@ -32,7 +33,7 @@ public class CapitalItems {
 				if(im.getDisplayName().equals(ChatColor.GREEN+"Lottery Ticket")) {
 					List<String> lore = im.getLore();
 					if(ValidationUtils.isInt(lore.get(0))) {
-						if(lore.get(1).equals("�9Server Powerball")) {
+						if(lore.get(1).equals(ChatColor.BLUE+"Server Powerball")) {
 							return true;
 						}
 					}
