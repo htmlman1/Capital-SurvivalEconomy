@@ -18,7 +18,7 @@ public class VaultBalanceCommand {
 			if(user.hasVault()) {
 				if(user.hasPermission(CapitalPermission.CHECK_THEIR_VAULT) || user.hasPermission(CapitalPermission.CHECK_ALL_VAULT)) {
 					String typeAmounts = user.getCapitalVault().getTypeAmounts();
-					user.sendMessage(ChatColor.GRAY+"You have ChatColor.GOLD+"$" + CapitalMessages.toCashFormat(user.getCapitalVault().getValue()) + " �7worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
+					user.sendMessage(ChatColor.GRAY+"You have " +ChatColor.GOLD+"$" + CapitalMessages.toCashFormat(user.getCapitalVault().getValue()) + ChatColor.GRAY + " worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
 				} else {
 					throw new IllegalArgumentException(CapitalMessages.NO_PERMS);
 				}
@@ -28,7 +28,7 @@ public class VaultBalanceCommand {
 		} else if(sender instanceof ConsoleCommandSender) {
 			ServerCapitalUser user = CapitalUserFactory.getServerUser();
 			String typeAmounts = user.getVault().getTypeAmounts();
-			user.sendMessage(ChatColor.GRAY+"You have ChatColor.GOLD+"$" + CapitalMessages.toCashFormat(user.getVault().getValue()) + " �7worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
+			user.sendMessage(ChatColor.GRAY+"You have " + ChatColor.GOLD+"$" + CapitalMessages.toCashFormat(user.getVault().getValue()) + ChatColor.GRAY + " worth of items in your vault" + ((typeAmounts == "") ? "." : ", consisting of " + typeAmounts));
 		}
 	}
 	

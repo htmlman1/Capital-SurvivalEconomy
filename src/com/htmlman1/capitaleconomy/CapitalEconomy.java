@@ -22,7 +22,7 @@ import com.htmlman1.capitaleconomy.lottery.LotteryTicketManager;
 
 public class CapitalEconomy extends JavaPlugin {
 	
-	public static Plugin plugin;
+	private static Plugin plugin;
 	public static File usersDir;
 	public static File purchaseFile;
 
@@ -50,7 +50,7 @@ public class CapitalEconomy extends JavaPlugin {
 		
 		this.getServer().getPluginManager().registerEvents(new GeneralListener(), this);
 		this.getServer().getPluginManager().registerEvents(new SignShopListener(this), this);
-		this.getServer().getPluginManager().registerEvents(new VaultRegisterListener(), this);
+		this.getServer().getPluginManager().registerEvents(new VaultRegisterListener(this), this);
 		
 		loadValues();
 	}

@@ -17,16 +17,22 @@ import com.htmlman1.capitaleconomy.user.CapitalUser;
 
 public class VaultRegisterListener implements Listener {
 
+	CapitalEconomy plugin;
+	
+	public VaultRegisterListener(CapitalEconomy plugin) {
+		this.plugin = plugin;
+	}
+	
 	@EventHandler
 	public void onVaultRegister(final VaultRegisterEvent event) {
 		if(!event.isCancelled()) {
 			final CapitalUser user = CapitalUserFactory.getUser(event.getOwner());
 			user.setVault(event.getVault());
 			
-			Bukkit.getScheduler().runTaskLater(CapitalEconomy.plugin, new Runnable() {
+			Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
 				public void run() {
 					Sign vaultSign = event.getVaultSign();
-					vaultSign.setLine(0, "�3[ChatColor.GOLD+"CapitalVault�3]");
+					vaultSign.setLine(0, ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "CapitalVault" + ChatColor.DARK_AQUA + "]");
 					vaultSign.setLine(1, user.getPlayer().getName());
 					vaultSign.update();
 				}

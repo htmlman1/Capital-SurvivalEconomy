@@ -23,7 +23,7 @@ public class LotteryBuyCommand {
 					try {
 						inv.addItem(CapitalItems.getLotteryTicket());
 						user.decreaseDebit(ConfigurationSettings.ticketPrice);
-						sender.sendMessage(ChatColor.GREEN+"You purchased one lottery ticket for ChatColor.GOLD+"$" + ConfigurationSettings.ticketPrice + ChatColor.GREEN+".");
+						sender.sendMessage(ChatColor.GREEN+"You purchased one lottery ticket for" + ChatColor.GOLD + "$" + ConfigurationSettings.ticketPrice + ChatColor.GREEN + ".");
 					} catch (LotteryFullException e) {
 						throw new IllegalArgumentException(ChatColor.RED+"Sorry, but all available slots for the lottery have already been purchased.");
 					}

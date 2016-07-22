@@ -24,7 +24,7 @@ public class CashCountCommand {
 					worth = ServerShop.getValue(player.getInventory());
 				}
 				
-				sender.sendMessage(ChatColor.GREEN+"The items in your " + context + " are currently worth ChatColor.GOLD+"$" + CapitalMessages.toCashFormat(worth) + ChatColor.GREEN+".");
+				sender.sendMessage(ChatColor.GREEN + "The items in your " + context + " are currently worth " + ChatColor.GOLD + "$" + CapitalMessages.toCashFormat(worth) + ChatColor.GREEN + ".");
 			} else {
 				sender.sendMessage(ChatColor.RED+"/cash <all|hand>");
 			}
