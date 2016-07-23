@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 import com.htmlman1.capitaleconomy.util.Serialization;
-import com.sun.deploy.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Sign;

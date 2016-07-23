@@ -14,6 +14,7 @@ import com.htmlman1.capitaleconomy.event.VaultRegisterEvent;
 import com.htmlman1.capitaleconomy.event.VaultUnregisterEvent;
 import com.htmlman1.capitaleconomy.event.VaultUnregisterEvent.RemovalMethod;
 import com.htmlman1.capitaleconomy.user.CapitalUser;
+import com.htmlman1.capitaleconomy.util.BlockUtils;
 
 public class VaultRegisterListener implements Listener {
 
@@ -53,6 +54,7 @@ public class VaultRegisterListener implements Listener {
 		if(event.isCancelled() && event.getRemovalMethod() != RemovalMethod.COMMAND) return;
 			
 		CapitalUser owner = CapitalUserFactory.getUser(event.getOwner());
+		BlockUtils.getAttachedVaultSign(owner.getVault()).getBlock().breakNaturally();
 		owner.removeVault();
 		
 		owner.sendMessage(ChatColor.RED+"Your vault was unregistered.");

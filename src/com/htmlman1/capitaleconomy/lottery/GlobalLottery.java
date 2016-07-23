@@ -1,10 +1,13 @@
 package com.htmlman1.capitaleconomy.lottery;
 
+import org.bukkit.scheduler.BukkitTask;
+
 public class GlobalLottery {
 	
 	private static boolean started;
 	private static long countdown;
 	private static long elapsed;
+	private static BukkitTask task;
 	
 	public static long getCountdown() {
 		return countdown;
@@ -36,7 +39,8 @@ public class GlobalLottery {
 	
 	private class GlobalLotteryUpdateTask implements Runnable {
 		public void run() {
-			
+			if(started) GlobalLottery.elapsed++;
+			else GlobalLottery.elapsed = 0;
 		}
 	}
 	
