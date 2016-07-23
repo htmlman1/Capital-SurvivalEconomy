@@ -9,4 +9,4 @@
 - Vault
   + Add /vault unregister command in case BlockBreakEvent handler fails
 - Lottery
-- Refactor and optimise code
+- Refactor and optimise code(i.e. merge listeners
