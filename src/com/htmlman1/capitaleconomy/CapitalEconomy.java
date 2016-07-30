@@ -66,6 +66,10 @@ public class CapitalEconomy extends JavaPlugin {
 		}
 	}
 	
+	public static Plugin getPlugin() {
+		return plugin;
+	}
+	
 	public static void loadValues() {
 		plugin.reloadConfig();
 		ConfigurationSettings.init(plugin.getConfig());
