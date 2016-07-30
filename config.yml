@@ -30,5 +30,8 @@ taxes:
     server-lottery: 75
     server-market: 25
     
-# The price of a lottery ticket.
-ticket-price: 25
+# 'countdown' is an integer, in seconds, which determines the time the lottery will take to reveal a winner.
+# 'ticket-price' controls the price of a lottery ticket.
+lottery:
+  countdown: 45
+  ticket-price: 25
