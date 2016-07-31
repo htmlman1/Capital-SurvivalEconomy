@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -41,6 +42,17 @@ public class CapitalItems {
 			}
 		}
 		return false;
+	}
+	
+	public static ItemStack getTicket(Inventory inv) {
+		for(ItemStack i : inv.getContents()) {
+			if(isLotteryTicket(i)) return i;
+		}
+		return null;
+	}
+	
+	public static boolean hasTicket(Inventory inv) {
+		return getTicket(inv) != null;
 	}
 	
 	public static int getTicketNumber(ItemStack i) {

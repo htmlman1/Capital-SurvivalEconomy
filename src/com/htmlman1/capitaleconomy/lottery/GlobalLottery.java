@@ -1,7 +1,10 @@
 package com.htmlman1.capitaleconomy.lottery;
 
+import java.util.Random;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
 import com.htmlman1.capitaleconomy.CapitalEconomy;
@@ -12,6 +15,7 @@ public class GlobalLottery {
 	private static long countdown;
 	private static long elapsed;
 	private static BukkitTask task;
+	private static Random random;
 	
 	public static long getCountdown() {
 		return countdown;
@@ -39,6 +43,10 @@ public class GlobalLottery {
 	
 	public static long timeLeft() {
 		return countdown - elapsed;
+	}
+	
+	public static int getWinningNumber() {
+		return random.nextInt(100) + 1;
 	}
 
 	public static void start() {
